@@ -9,10 +9,14 @@ const boton = document.getElementById('toggleBtn');
 
 function alternarVisibilidad() {
     
-    if (caja.style.display === 'none' || caja.style.display === '') {
+    if (caja.style.display === 'none') {
+
         caja.style.display = 'block';
+
     } else{
+
         caja.style.display = 'none';
+        
     }
 }
 

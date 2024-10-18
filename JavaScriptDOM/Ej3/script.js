@@ -28,7 +28,6 @@ function añadirItem() {
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = '🗑️';
     deleteBtn.classList.add('deleteBtn');
-    deleteBtn.id = 'deleteBtn';
 
     // Marcar como completado
     completeBtn.addEventListener('click', function(){

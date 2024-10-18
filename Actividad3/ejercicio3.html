@@ -1,0 +1,34 @@
+<!--
+En esta página web debes agregar un script para asignar un manejador de eventos al
+botón button. Este script deberá escribir en el campo total el valor de multiplicar los otros
+dos campos.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input id="precio" type="number">
+        <input id="cantidad" type="number">
+        <input type="button" id="enviar" value="Calcular">
+        <input id="total" readonly>
+        </form>
+        <script>
+            const precio = document.getElementById('precio');
+            const cantidad = document.getElementById('cantidad');
+            const boton = document.getElementById('enviar');
+            const total = document.getElementById('total');
+
+            function multiplicar() {
+                total.value = precio.value * cantidad.value;
+            }
+
+            boton.addEventListener('click', multiplicar);
+        </script>
+</body>
+</html>
