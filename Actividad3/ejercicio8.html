@@ -1,0 +1,59 @@
+<!--
+En esta página existen tres bloques ocultos. Debes crear un evento de teclado para que
+actúe cuando el usuario pulsa una tecla. si pulsa la tecla 1 se abre el bloque con id ficha1,
+si pulsa 2 se abre el bloque ficha2 y si pulsa 3 se abre el de ficha3.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .oculto{ display: none}
+        .visible {display:baock}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="oculto" id="ficha1">
+    Hola, soy el bloque 1</div>
+    
+    <div class="oculto" id="ficha2">
+    Hola, soy el bloque 2</div>
+    
+    <div class="oculto" id="ficha3">
+    Hola, soy el bloque 3</div>
+
+    <script>
+        let bloque1 = document.getElementById('ficha1');
+        let bloque2 = document.getElementById('ficha2');
+        let bloque3 = document.getElementById('ficha3');
+
+        document.addEventListener('keydown', function(event) {  // Asegúrate de incluir 'event' aquí
+            // Ocultar todos los bloques
+            bloque1.classList.remove('visible');
+            bloque1.classList.add('oculto');
+            bloque2.classList.remove('visible');
+            bloque2.classList.add('oculto');
+            bloque3.classList.remove('visible');
+            bloque3.classList.add('oculto');
+
+            // Mostrar el bloque correspondiente según la tecla presionada
+            switch (event.key) {
+                case '1':
+                    bloque1.classList.remove('oculto');
+                    bloque1.classList.add('visible');
+                    break;
+                case '2':
+                    bloque2.classList.remove('oculto');
+                    bloque2.classList.add('visible');
+                    break;
+                case '3':
+                    bloque3.classList.remove('oculto');
+                    bloque3.classList.add('visible');
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

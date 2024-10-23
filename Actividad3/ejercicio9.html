@@ -1,0 +1,40 @@
+<!--
+Escribe un script que responda al evento scroll y que muestre un boton o bloque div en el
+fondo de la pantalla cuando deje de verse la línea superior del documento.
+El botón se queda quieto en el fondo de la pantalla. Recuerda que el alto de la ventana del
+navegador viene dado por window.innerHeight mientras que el desplazamiento vertical de
+la ventana está en window.scrollY
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #boton{ position: absolute; display:none}
+        body{height: 200vh}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Primera linea o cabecera</h1>
+    <div id="boton">Boton</div>
+
+    <script>
+        let boton = document.getElementById('boton');
+        let cabecera = document.querySelector('h1').offsetHeight; // Altura cabecera
+
+        document.addEventListener('scroll', function(){
+
+            if (window.scrollY > cabecera) {
+                boton.style.display = 'block';
+                boton.style.position = 'fixed';
+                boton.style.bottom = '20px';
+                boton.style.left = '50%';
+            } else {
+                boton.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
