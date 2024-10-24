@@ -23,8 +23,8 @@ encuentra el puntero del ratón mientras se mueve por todo el documento
     let cY = document.getElementById('cY');
 
     document.addEventListener('mousemove', function(event){
-        cX.value = event.screenX;
-        cY.value = event.screenY;
+        cX.value = event.clientX;
+        cY.value = event.clientY;
     });
 </script>
 </body>

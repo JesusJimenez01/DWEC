@@ -1,0 +1,32 @@
+<!--
+En este input no se deben aceptar valores que sean numéricos. Todo lo que esté entre 0 y 9
+no se debe aceptar. Diseña un manejador de eventos para evitar que en el control se anoten
+números.
+Al pulsar una tecla numérica debe interrumpirse el flujo normal predefinido del input para
+no admitir la tecla pulsada.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+    <label>No se aceptan dígitos</label>
+    <input type="text" id="letras">
+    </form>
+
+    <script>
+        let input = document.getElementById('letras');
+        function evitarnumeros(event) {
+            if (event.key >= '0' && event.key <= '9') {
+                event.preventDefault();
+            }
+        }
+
+        document.addEventListener('keydown', evitarnumeros);
+    </script>
+</body>
+</html>
