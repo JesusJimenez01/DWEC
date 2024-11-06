@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <script>
+        let num;
+        let array = [];
+        do {
+            num = prompt("Ingrese un número, para dejar de añadir números ingrese 0 o un valor no númerico: ");
+            if (num != 0 && !isNaN(num)) {
+                array.push(num);
+            }
+        } while (num != 0 && !isNaN(num));
+
+        alert(array);
+    </script>
+</body>
+</html>
