@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+    <script>
+        function precio(producto) {
+            let listaPrecios = [['monitor', 200], ['teclado', 20], ['ratón', 10]];
+            producto.toLowerCase();
+            for (let i = 0; i < listaPrecios.length; i++) {
+                const element = listaPrecios[i][0];
+                if (element === producto) {
+                    return listaPrecios[i][1];
+                }
+            }
+        }
+
+        alert(precio('monitor') + "€");
+    </script>
+</body>
+</html>

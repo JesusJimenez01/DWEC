@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <script>
+        function min(arr, tipo) {
+        let minValor = arr[0];
+        let minIndice = 0;
+
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] < minValor) {
+                minValor = arr[i];
+                minIndice = i;
+            }
+        }
+
+        return tipo === 'v' ? minValor : minIndice;
+        }
+
+        alert(min([5,3,1,6,9], 'i'));
+    </script>
+</body>
+</html>

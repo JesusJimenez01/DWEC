@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +9,36 @@
     <script>
         let num;
         let array = [];
-        do {
-            num = prompt("Ingrese un número, para dejar de añadir números ingrese 0 o un valor no númerico: ");
-            if (num != 0 && !isNaN(num)) {
-                array.push(num);
-            }
-        } while (num != 0 && !isNaN(num));
+        let countPares = 0;
+        let countImpares = 0;
+        let index = 0;
 
-        alert(array);
+        do {
+            num = prompt("Ingrese un número, para dejar de añadir números ingrese 0 o un valor no numérico: ");
+   
+            if (!isNaN(num) && num !== '' && num !== null) {
+                num = Number(num); 
+                if (num === 0) {
+                    break;
+                }
+
+                array[index] = num;
+                index++;
+
+                if (num % 2 === 0) {
+                    countPares++;
+                } else {
+                    countImpares++;
+                }
+            } else {
+                alert("Valor no numérico detectado, terminando el ingreso de datos.");
+                break;
+            }
+        } while (true);
+
+        alert("Array ingresado: [" + array.join(", ") + "]");
+        alert("Cantidad de números pares: " + countPares);
+        alert("Cantidad de números impares: " + countImpares);
     </script>
 </body>
 </html>

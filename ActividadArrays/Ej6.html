@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+    <script>
+        function existeEn(letra, array) {
+            let contieneLetra = false;
+            for (let i = 0; i < array.length; i++) {
+                let element = array[i];
+                if (element === letra) {
+                    contieneLetra = true;
+                }
+            }
+            return contieneLetra;
+        }
+
+        alert(existeEn('a', ['w','e','r','i']) ? "El array contiene la letra seleccionada" : "El array no contiene la letra seleccionada");
+    </script>
+</body>
+</html>
