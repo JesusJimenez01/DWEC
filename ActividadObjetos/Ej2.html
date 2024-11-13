@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2, Verificar los vacíos</title>
+</head>
+<body>
+    <script>
+        function isEmpty(obj) {
+            return Object.keys(obj).length === 0;
+        }
+        
+        let schedule = {};
+        alert(isEmpty(schedule));
+        schedule["8:30"] = "Hora de levantarse";
+        alert(isEmpty(schedule));
+    </script>
+</body>
+</html>
