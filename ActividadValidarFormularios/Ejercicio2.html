@@ -72,7 +72,7 @@
             let regex_usuario = /^[^\s]{8,}$/;
 
             if (!regex_usuario.test(usuario)) {
-                document.getElementById("error-usuario").textContent = "El nombre de usuario debe tener al menos 8 caracteres y no debe contener espacios.";
+                document.getElementById("error-usuario").textContent = "El nombre de usuario '" + usuario + "' debe tener al menos 8 caracteres y no debe contener espacios.";
                 document.getElementById("usuario").classList.add("input-error");
                 formulario_valido = false;
             }
@@ -80,7 +80,7 @@
             let regex_password = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,10}$/;
 
             if (!regex_password.test(password)) {
-                document.getElementById("error-password").textContent = "La contraseña debe tener entre 6 y 10 caracteres, con al menos un dígito y una letra mayúscula.";
+                document.getElementById("error-password").textContent = "La contraseña '" + password + "' debe tener entre 6 y 10 caracteres, con al menos un dígito y una letra mayúscula.";
                 document.getElementById("password").classList.add("input-error");
                 formulario_valido = false;
             }
