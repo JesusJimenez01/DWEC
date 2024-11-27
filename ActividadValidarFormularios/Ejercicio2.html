@@ -1,11 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 2</title>
+    <style>
+        .input-error {
+            border-color: red;
+        }
+        .mensaje-error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Formulario de Registro</h1>
+
+    <form id="formulario_registro" action="grabar.php" method="POST" onsubmit="return validacion()">
+        <div>
+            <label for="usuario">Nombre de usuario:</label>
+            <input type="text" id="usuario" name="usuario">
+            <div id="error-usuario" class="mensaje-error"></div>
+        </div>
+
+        <div>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password">
+            <div id="error-password" class="mensaje-error"></div>
+        </div>
+
+        <div>
+            <label for="poblacion">Población:</label>
+            <select id="poblacion" name="poblacion">
+                <option value="">– Seleccione –</option>
+                <option value="Algeciras">Algeciras</option>
+                <option value="Arcos de la Frontera">Arcos de la Frontera</option>
+                <option value="Barbate">Barbate</option>
+                <option value="Cádiz">Cádiz</option>
+                <option value="Chiclana de la Frontera">Chiclana de la Frontera</option>
+                <option value="Conil de la Frontera">Conil de la Frontera</option>
+                <option value="El Puerto de Santa María">El Puerto de Santa María</option>
+                <option value="La Línea de la Concepción">La Línea de la Concepción</option>
+                <option value="San Fernando">San Fernando</option>
+                <option value="Sanlúcar de Barrameda">Sanlúcar de Barrameda</option>
+            </select>
+            <div id="error-poblacion" class="mensaje-error"></div>
+        </div>
+
+        <div>
+            <button type="submit">Registrar</button>
+        </div>
+    </form>
+
+    <script>
+        function validacion() {
+            let usuario = document.getElementById("usuario").value;
+            let password = document.getElementById("password").value;
+            let poblacion = document.getElementById("poblacion").value;
+
+            let formulario_valido = true;
+
+            document.getElementById("error-usuario").textContent = "";
+            document.getElementById("error-password").textContent = "";
+            document.getElementById("error-poblacion").textContent = "";
+
+            document.getElementById("usuario").classList.remove("input-error");
+            document.getElementById("password").classList.remove("input-error");
+            document.getElementById("poblacion").classList.remove("input-error");
+
+            let regex_usuario = /^[^\s]{8,}$/;
+
+            if (!regex_usuario.test(usuario)) {
+                document.getElementById("error-usuario").textContent = "El nombre de usuario debe tener al menos 8 caracteres y no debe contener espacios.";
+                document.getElementById("usuario").classList.add("input-error");
+                formulario_valido = false;
+            }
+
+            let regex_password = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,10}$/;
+
+            if (!regex_password.test(password)) {
+                document.getElementById("error-password").textContent = "La contraseña debe tener entre 6 y 10 caracteres, con al menos un dígito y una letra mayúscula.";
+                document.getElementById("password").classList.add("input-error");
+                formulario_valido = false;
+            }
+
+            if (poblacion === "") {
+                document.getElementById("error-poblacion").textContent = "Debes seleccionar una población válida";
+                document.getElementById("poblacion").classList.add("input-error");
+                formulario_valido = false;
+            }
+
+            return formulario_valido;
+        }
+    </script>
+
 </body>
 </html>
