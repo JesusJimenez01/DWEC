@@ -4,25 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 1</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        .input-error {
+            border-color: red;
+        }
+    </style>
 </head>
 <body>
     <h1>USUARIO</h1>
     <form id="formulario_basico" onsubmit="return validacion()">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" required>
+        <input type="text" id="nombre">
+        <p id="error-nombre" class="error"></p>
 
         <label for="email">Correo electrónico:</label>
-        <input type="text" id="email" required>
+        <input type="text" id="email">
+        <p id="error-email" class="error"></p>
 
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" required>
+        <input type="password" id="password">
+        <p id="error-password" class="error"></p>
 
         <p id="preguntasuma"></p>
         <label for="suma">Resultado:</label>
-        <input type="number" id="suma" required>
+        <input type="number" id="suma">
+        <p id="error-suma" class="error"></p>
 
         <label>
-            <input type="checkbox" id="terminos">
+            <input type="checkbox" id="terminos" required>
             Acepto las condiciones
         </label>
 
@@ -30,7 +44,64 @@
     </form>
 
     <script>
-        
+        let num1 = Math.floor(Math.random() * 10);
+        let num2 = Math.floor(Math.random() * 10);
+        let resultado = num1 + num2;
+
+        document.getElementById("preguntasuma").textContent = `¿Cuánto es ${num1} + ${num2}?`;
+
+        function validacion() {
+            let nombre = document.getElementById("nombre").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let suma = document.getElementById("suma").value;
+
+            let regex_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let regex_password = /^(?=.*\d).{8,}$/;
+
+            let formulario_valido = true;
+
+            document.getElementById("error-nombre").textContent = "";
+            document.getElementById("error-email").textContent = "";
+            document.getElementById("error-password").textContent = "";
+            document.getElementById("error-suma").textContent = "";
+            document.getElementById("nombre").classList.remove("input-error");
+            document.getElementById("email").classList.remove("input-error");
+            document.getElementById("password").classList.remove("input-error");
+            document.getElementById("suma").classList.remove("input-error");
+
+            if (nombre === "") {
+                document.getElementById("error-nombre").textContent = "El nombre no debe estar vacío.";
+                document.getElementById("nombre").classList.add("input-error");
+                formulario_valido = false;
+            }
+
+            if (!regex_email.test(email)) {
+                document.getElementById("error-email").textContent = "La dirección de correo introducida no es válida.";
+                document.getElementById("email").classList.add("input-error");
+                formulario_valido = false;
+            }
+
+            if (!regex_password.test(password)) {
+                document.getElementById("error-password").textContent = "La contraseña debe tener al menos 8 caracteres y al menos un dígito.";
+                document.getElementById("password").classList.add("input-error");
+                formulario_valido = false;
+            }
+
+            if (parseInt(suma) !== resultado) {
+                document.getElementById("error-suma").textContent = "El resultado de la suma no es válido.";
+                document.getElementById("suma").classList.add("input-error");
+                formulario_valido = false;
+            }
+
+            if (!formulario_valido) {
+                return false;
+            }
+
+            alert('Gracias por rellenar nuestro formulario correctamente.');
+            return true;
+        }
     </script>
 </body>
 </html>
+
