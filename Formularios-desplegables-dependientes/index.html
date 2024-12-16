@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <select name="provincia" id="provincia" required onchange="ActualizarMunicipios()">
+            <option value="" selected disabled hidden>Seleccionar provincia</option>
+        </select>
+
+        <select name="municipio" id="municipio" required>
+            <option value="" selected disabled hidden>-</option>
+        </select>
+
+        <button type="submit">Enviar</button>
+    </form>
+    <script>
+        let provincias = {
+            "Cádiz": ["Algeciras", "Cádiz", "Jerez de la Frontera", "San Fernando", "El Puerto de Santa María"],
+            "Huelva": ["Huelva", "Lepe", "Almonte", "Punta Umbría", "Ayamonte"],
+            "Sevilla": ["Sevilla", "Alcalá de Guadaíra", "Dos Hermanas", "Mairena del Aljarafe", "Écija"],
+            "Málaga": ["Málaga", "Marbella", "Torremolinos", "Estepona", "Fuengirola"],
+            "Granada": ["Granada", "Motril", "Baza", "Almuñécar", "Íllora"],
+            "Córdoba": ["Córdoba", "Lucena", "Puente Genil", "Baena", "Priego de Córdoba"],
+            "Almería": ["Almería", "Roquetas de Mar", "El Ejido", "Níjar", "Vera"],
+            "Jaén": ["Jaén", "Linares", "Andújar", "Úbeda", "Baeza"]
+        }
+
+
+        function ActualizarProvincias() {
+            let select_provincias = document.getElementById("provincia"); 
+            for (let [provincia, municipio] of Object.entries(provincias)) {
+                let opt = document.createElement("option");
+                opt.value = provincia;
+                opt.innerHTML = provincia;
+                select_provincias.appendChild(opt);
+            }
+        }
+        window.addEventListener("load", ActualizarProvincias());
+
+        function ActualizarMunicipios() {
+            let select_provincias = document.getElementById("provincia");
+            let select_municipios = document.getElementById("municipio");
+
+            select_municipios.options.length = 0;
+
+            let option_por_defecto = document.createElement("option");
+            option_por_defecto.value = "";
+            option_por_defecto.innerHTML = "-";
+            option_por_defecto.selected = true;
+            option_por_defecto.disabled = true;
+            option_por_defecto.hidden = true;
+            select_municipios.appendChild(option_por_defecto);
+
+            for (let [provincia, municipio] of Object.entries(provincias)){
+                for (let index = 0; index < municipio.length; index++) {
+                    if (select_provincias.value === provincia) {
+                        let opt = document.createElement("option");
+                        opt.value = municipio[index];
+                        opt.innerHTML = municipio[index];
+                        select_municipios.appendChild(opt);
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
