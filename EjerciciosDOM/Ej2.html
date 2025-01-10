@@ -34,17 +34,27 @@
     </p>
 </body>
 <script>
+    // Apartado 1
     let enlaces = document.querySelectorAll("a");
-    alert("El documento tiene " + enlaces.length + " enlaces");
+    alert("El documento tiene " + enlaces.length + " enlaces.");
+
+    // Apartado 2
     let penultimo_enlace = enlaces[enlaces.length - 2];
-    alert(penultimo_enlace);
+    alert("El penúltimo enlace es: " + penultimo_enlace);
+
+    // Apartado 3
     let enlaces_prueba = 0;
     for (let index = 0; index < enlaces.length; index++) {
         let element = enlaces[index];
-        if (element.href === "http://prueba") {
+        if (element.getAttribute("href") === "http://prueba") {
             enlaces_prueba++;
         }
     }
-    alert(enlaces_prueba);
+    alert("El documento tiene " + enlaces_prueba + " enlaces que enlazan a 'http://prueba'.");
+
+    // Apartado 4
+    let parrafos = document.querySelectorAll("p");
+    let enlaces_tercer_parrafo = parrafos[2].querySelectorAll("a");
+    alert("El tercer párrafo contiene " + enlaces_tercer_parrafo.length + " enlaces.");
 </script>
 </html>
