@@ -34,5 +34,47 @@
     </p>
     <p id="resultado2"></p>
 </body>
+<script>
+    let calculo = document.getElementById("calculo");
+    let calculomultiple = document.getElementById("calculomultiple");
+
+    calculo.onclick = function() {
+        let valor1 = document.getElementById("valor1").value;
+        let valor2 = document.getElementById("valor2").value;
+        let operacion = document.getElementById("operacion");
+        let resultado1 = document.getElementById("resultado1");
+        resultado1.textContent = "";
+        if (operacion.value === "suma") {
+            resultado1.appendChild(document.createTextNode("La suma es " + (+valor1 + +valor2)));
+        } else {
+            resultado1.appendChild(document.createTextNode("La diferencia es " + (+valor1 - +valor2)));
+        }
+    }
+
+    calculomultiple.onclick = function () {
+        let valor1 = document.getElementById("valor1").value;
+        let valor2 = document.getElementById("valor2").value;
+        let operaciones = document.getElementById("operaciones").selectedOptions;
+        let resultado2 = document.getElementById("resultado2");
+        let textosuma = document.createTextNode("La suma es " + (+valor1 + +valor2));
+        let textoresta = document.createTextNode(" - La diferencia es " + (+valor1 - +valor2));
+        resultado2.textContent = "";
+
+        let resultado = [];
+        for (let i = 0; i < operaciones.length; i++) {
+            resultado.push(operaciones[i].value);
+        }
+        
+
+        if (resultado[0] === "suma" && resultado[1] === "resta") {
+            resultado2.appendChild(textosuma);
+            resultado2.appendChild(textoresta);
+        } else if (resultado[0] === "resta") {
+            resultado2.appendChild(textoresta);
+        } else if (resultado[0] === "suma") {
+            resultado2.appendChild(textosuma);
+        }
+    }
+</script>
 
 </html>

@@ -17,6 +17,14 @@
       <span>Caracteres posibles:</span>
       <span id="resultado">50</span>
     </p>
-  </body>
-  
-  </html>
+</body>
+
+<script>
+  let texto = document.getElementById("comentarios");
+  let resultado = document.getElementById("resultado");
+  texto.onkeyup = function () {
+    resultado.textContent = texto.getAttribute("maxlength") - +texto.value.length;
+  }
+</script>
+
+</html>

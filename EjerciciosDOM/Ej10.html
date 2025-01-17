@@ -22,7 +22,27 @@
         <input type="submit" value="confirmar" id="confirmar" />
       </p>
     </form>
-  
 </body>
+
+<script>
+  let email = document.getElementById("email");
+  let emailregex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  let submit = document.getElementById("confirmar");
+  let url = document.getElementById("url");
+  let urlregex = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
+  let formulario = document.getElementById("formulario");
+  let resultado1 = document.getElementById("resultado1");
+  let resultado2 = document.getElementById("resultado2");
+
+  formulario.onsubmit = function () {
+    if (emailregex.test(email.value)==true) {
+      resultado1.textContent = "correcto";
+    }
+    if(urlregex.test(url.value)==true) {
+      resultado2.textContent = "correcto";
+    }
+  }
+
+</script>
   
 </html>
