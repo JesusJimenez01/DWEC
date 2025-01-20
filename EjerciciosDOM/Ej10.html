@@ -19,7 +19,7 @@
         <span id="resultado2"></span>
       </p>
       <p>
-        <input type="submit" value="confirmar" id="confirmar" />
+        <input type="button" value="confirmar" id="confirmar" />
       </p>
     </form>
 </body>
@@ -34,7 +34,7 @@
   let resultado1 = document.getElementById("resultado1");
   let resultado2 = document.getElementById("resultado2");
 
-  formulario.onsubmit = function () {
+  formulario.onclick = function () {
     if (emailregex.test(email.value)==true) {
       resultado1.textContent = "correcto";
     }
