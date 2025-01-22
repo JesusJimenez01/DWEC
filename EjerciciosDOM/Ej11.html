@@ -12,9 +12,11 @@
 <script>
     let boton = document.getElementById("num");
     boton.addEventListener("click", function () {
-        let aleatorio = Math.random() * 100;
+        let aleatorio = Math.floor(Math.random() * 100);
         let lista = document.getElementById("lista_desordenada");
-
+        let elemento = document.createElement("li");
+        elemento.textContent = aleatorio;
+        lista.appendChild(elemento);
     })
 </script>
 </html>
