@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table id="tabla"></table>
+    <br>
+    <button type="button" id="calcular">Calcular número casi primos</button>
+</body>
+<script>
+    let tabla = document.getElementById("tabla");
+    let boton = document.getElementById("calcular");
+    let num = 1;
+
+    window.onload = function () {
+        for (let i = 0; i < 100; i++) {
+        let tr = document.createElement("tr");
+        for (let j = 0; j < 100; j++) {
+            let td = document.createElement("td");
+            td.textContent = num;
+            tr.appendChild(td);
+            num++;
+        }
+        tabla.appendChild(tr);
+        }
+    }
+
+    function esCasiPrimo(numero) {
+        contador = 0
+        for (let i = 2; i < numero; i++) {
+        if (numero % i === 0) {
+            contador++;
+        }
+        }
+        if (contador === 1) {
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    function calcularCasiPrimos() {
+            let celdas = tabla.getElementsByTagName("td");
+            for (let i = 0; i < celdas.length; i++) {
+                if (esCasiPrimo(+celdas[i].textContent)) {
+                    celdas[i].style.backgroundColor = "yellow";
+                }
+            }
+        }
+    
+    boton.addEventListener("click", calcularCasiPrimos);
+</script>
+</html>
