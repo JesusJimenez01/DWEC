@@ -47,9 +47,24 @@
 		document.getElementById("info").style.backgroundColor = "#CCE6FF";
     }
 
+	function pulsarRaton(elEvento) {
+		let evento = elEvento || window.event;
+		let mensaje = [];
+		mensaje[0]= "Ratón";
+		let coordenadaX = evento.clientX;
+		let coordenadaY = evento.clientY;
+		mensaje[1] = "<br>Navegador ["+coordenadaX+","+coordenadaY+"]<br>"
+		let coordenadaPagX = evento.pageX;
+		let coordenadaPagY = evento.pageY;
+		mensaje[2] = "Pagina ["+coordenadaPagX+","+coordenadaPagY+"]"+"<br>";
+		document.getElementById("info").style.background = '#FFFFCC';
+		muestraInformacion(mensaje);
+	}
+
 	window.onload = function() {
 		document.addEventListener("mousemove", moverRaton);
 		document.addEventListener("keypress", teclaPulsada);
+		document.addEventListener("click", pulsarRaton);
 	}
 </script>
 </head>
