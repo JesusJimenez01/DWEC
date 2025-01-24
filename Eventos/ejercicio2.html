@@ -53,10 +53,10 @@
 		mensaje[0]= "Ratón";
 		let coordenadaX = evento.clientX;
 		let coordenadaY = evento.clientY;
-		mensaje[1] = "<br>Navegador ["+coordenadaX+","+coordenadaY+"]<br>"
+		mensaje[1] = "Navegador [" + coordenadaX + ", " + coordenadaY + "]";
 		let coordenadaPagX = evento.pageX;
 		let coordenadaPagY = evento.pageY;
-		mensaje[2] = "Pagina ["+coordenadaPagX+","+coordenadaPagY+"]"+"<br>";
+		mensaje[2] = "Pagina [" + coordenadaPagX + ", " + coordenadaPagY + "]";
 		document.getElementById("info").style.background = '#FFFFCC';
 		muestraInformacion(mensaje);
 	}

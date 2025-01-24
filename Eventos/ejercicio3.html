@@ -12,30 +12,32 @@ body {font-family: arial, helvetica;}
 	function informacion(elEvento) {
 		var evento = elEvento || window.event;
 
-		let coordX = evento.clientX;
-		let coordY = evento.clientY;
-
+		let coordX = parseFloat(evento.clientX);
+		let coordY = parseFloat(evento.clientY);
 		let dimensiones = [];
-		dimensiones = tamanoVentanaNavegador();
+		dimensiones[0] = innerWidth;
+		dimensiones[1] = innerHeight;
+		let horizontal, vertical;
+		alert(dimensiones);
 		if (coordX < dimensiones[0]/2) {
-			let horizontal = "Izquierda ";
+			horizontal = "Izquierda ";
 			if (coordY < dimensiones[1]/2) {
-				let vertical = "superior";
+				vertical = "superior";
 			} else{
-				let vertical = "inferior";
+				vertical = "inferior";
 			}
 		} else{
-			let horizontal = "Derecha ";
+			horizontal = "Derecha ";
 			if (coordY < dimensiones[1]/2) {
-				let vertical = "superior";
+				vertical = "superior";
 			} else {
-				let vertical = "inferior";
+				vertical = "inferior";
 			}
 		}
 		
 		muestraInformacion([
 			"Ratón",
-			"Has pulsado el ratón en la zona " + horizontal + vertical
+			"Has pulsado el ratón en la zona " + horizontal + vertical,
 		]);
 	}
 
@@ -46,23 +48,23 @@ body {font-family: arial, helvetica;}
 		}
 	}
 
-	function tamanoVentanaNavegador(){
-		// Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
-		var dimensiones = [];
+	// function tamanoVentanaNavegador(){
+	// 	// Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+	// 	var dimensiones = [];
 		
-		if(typeof(window.innerWidth) == 'number') {
-			// No es IE
-			dimensiones = [window.innerWidth, window.innerHeight];
-		} else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
-			//IE 6 en modo estandar (no quirks)
-			dimensiones = [document.documentElement.clientWidth, document.documentElement.clientHeight];
-		} else if(document.body && (document.body.clientWidth || document.body.clientHeight)) {
-			//IE en modo quirks
-			dimensiones = [document.body.clientWidth, document.body.clientHeight];
-		}
+	// 	if(typeof(window.innerWidth) == 'number') {
+	// 		// No es IE
+	// 		dimensiones = [window.innerWidth, window.innerHeight];
+	// 	} else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+	// 		//IE 6 en modo estandar (no quirks)
+	// 		dimensiones = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+	// 	} else if(document.body && (document.body.clientWidth || document.body.clientHeight)) {
+	// 		//IE en modo quirks
+	// 		dimensiones = [document.body.clientWidth, document.body.clientHeight];
+	// 	}
 		
-		return dimensiones;
-	}
+	// 	return dimensiones;
+	// }
 
 	window.onload = function () {
 		document.addEventListener("click", informacion);
